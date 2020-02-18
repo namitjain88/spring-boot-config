@@ -1,0 +1,16 @@
+my:
+  greeting: Hello World!!
+  list:
+    values: One,Two,Three
+app:
+  name: My App
+  description: Welcome to ${app.name}
+
+db:
+  values: "{connectionString:'oracle.db.com', username:'foo', password:'foo'}"
+  connection: "{connectionString:'oracle.db.com', username:'foo', password:'foo'}"
+  host: 127.0.0.1
+  port: 1200
+
+#Expose all actuator endpoints
+management.endpoints.web.exposure.include: "*"

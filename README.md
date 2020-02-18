@@ -45,3 +45,6 @@ Override precedence: command line > application.properties w/ jar > application.
 * To identify spring-boot default config keys & then override the values using application.properties.
 * Add starter-actuator dependency and expose all endpoints using management.endpoints.web.exposure.include=* property
 * Access http://localhost:8080/actuator/configprops to find spring config key and then override.
+
+# YAML Configuration
+* Less verbose; Use spaces instead of tabs; colon : in place of =  
