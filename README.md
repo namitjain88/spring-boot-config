@@ -36,3 +36,7 @@ Override precedence: command line > application.properties w/ jar > application.
 * colon (:) to supply default value when actual key/value missing in properties file. e.g. @Value("${main value : default value}")
 * Injecting list of values in java List<> type variable. e.g. my.list.values=One,Two,Three then use @Value w/ List of String
 * Injecting key-value pairs using #{ _${key}_ } and keeping variable type as Map
+
+# @ConfigurationProperties
+* Maps multiple properties in single java object. Use @Configuration on top to make it a spring bean. @Autowired then.
+* Takes prefix of all properties as an input e.g. @ConfigurationProperties("db") will map all properties having db as key prefix
