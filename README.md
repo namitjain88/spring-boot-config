@@ -21,3 +21,5 @@ A sample project to understand spring boot configuration and it's uses
 * Consistent (all copies should refer same configuration in an env)
 * Version History (e.g. commit history if config files are part of code)
 * Real-Time management
+
+@Value to inject property value in a Class using ${"propertyKey"} syntax. This syntax can be used to refer another property.
