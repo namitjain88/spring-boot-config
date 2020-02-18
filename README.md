@@ -40,3 +40,8 @@ Override precedence: command line > application.properties w/ jar > application.
 # @ConfigurationProperties
 * Maps multiple properties in single java object. Use @Configuration on top to make it a spring bean. @Autowired then.
 * Takes prefix of all properties as an input e.g. @ConfigurationProperties("db") will map all properties having db as key prefix
+
+# Actuator ConfigProps Endpoint
+* To identify spring-boot default config keys & then override the values using application.properties.
+* Add starter-actuator dependency and expose all endpoints using management.endpoints.web.exposure.include=* property
+* Access http://localhost:8080/actuator/configprops to find spring config key and then override.
