@@ -78,4 +78,8 @@ Override precedence: command line > application.properties w/ jar > application.
 * Connecting to Git also helps maintain version history
 * Create spring-boot app with Config Server as dependency
 * Add @EnableConfigServer to Main class
-* See spring-boot-config-server repo for more details
+* See spring-boot-config-server repo for implementation and once completed follow below steps
+
+# Spring Cloud Config Client
+* Add spring-cloud-starter-config dependency, spring-cloud.version property and dependencies management tag from spring initializer pom.xml
+* Add config-server uri in YAML file by setting spring.cloud.config.uri=http://localhost:8888/
