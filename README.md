@@ -59,3 +59,23 @@ Override precedence: command line > application.properties w/ jar > application.
 * test-q1 takes the precedence here; default profile is always active
 * Use @Profile("profile-name") at Class level to tell spring-boot which bean to initialize based on active profile.
 * @Profile("default") is always there if not explicitly specified
+
+# Environment Bean (not recommended)
+* To look up profiles or properties into in any Class
+* Just @Autowired Environment class
+
+# Config as a microservice (Goal 3)
+* Create a microservice just for providing config to all microservices and all instances of each service.
+* This helps making all services be consistent as far as configuration is concerned.
+* Options to create a config service
+  * Apache Zookeeper
+  * ETCD - distributed key-value store
+  * Hashicorp Consul
+  * Spring Cloud Configuration Server (recommended in spring-boot env)
+  
+# Spring Cloud Config Server
+* It can connect to Git Repo and listens to changes committed.
+* Connecting to Git also helps maintain version history
+* Create spring-boot app with Config Server as dependency
+* Add @EnableConfigServer to Main class
+* See spring-boot-config-server repo for more details
