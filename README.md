@@ -47,4 +47,15 @@ Override precedence: command line > application.properties w/ jar > application.
 * Access http://localhost:8080/actuator/configprops to find spring config key and then override.
 
 # YAML Configuration
-* Less verbose; Use spaces instead of tabs; colon : in place of =  
+* Less verbose; Use spaces instead of tabs; colon : in place of = 
+
+# Spring Profiles: Env Specific Config (Goal 2) 
+* Profile is preset configuration values. Spring uses default profile if not specified
+* Convention to create profile application-<profile-name>.extn e.g. application-test.yml
+* Put every profile in parallel to main file. Keep common properties in default profile.
+* Set spring.profiles.active=profile-name in main properties file to always override default profile
+* Choose profile while running java -jar app.jar --spring.profiles.active=test
+* Multiple profiles can be active at once e.g. --spring.profiles.active=test,test-qa1
+* test-q1 takes the precedence here; default profile is always active
+* Use @Profile("profile-name") at Class level to tell spring-boot which bean to initialize based on active profile.
+* @Profile("default") is always there if not explicitly specified
