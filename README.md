@@ -83,3 +83,4 @@ Override precedence: command line > application.properties w/ jar > application.
 # Spring Cloud Config Client
 * Add spring-cloud-starter-config dependency, spring-cloud.version property and dependencies management tag from spring initializer pom.xml
 * Add config-server uri in YAML file by setting spring.cloud.config.uri=http://localhost:8888/
+* Configure spring-boot-config-server to supply application specific config by just creating another yml file in git repo with value same as of spring.application.name property e.g. spring-boot-config-client in this case.
