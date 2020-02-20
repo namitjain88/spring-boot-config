@@ -64,7 +64,7 @@ Override precedence: command line > application.properties w/ jar > application.
 * To look up profiles or properties into in any Class
 * Just @Autowired Environment class
 
-# Config as a microservice (Goal 3)
+# Config as a microservice (Goal 3 & 4)
 * Create a microservice just for providing config to all microservices and all instances of each service.
 * This helps making all services be consistent as far as configuration is concerned.
 * Options to create a config service
@@ -84,3 +84,13 @@ Override precedence: command line > application.properties w/ jar > application.
 * Add spring-cloud-starter-config dependency, spring-cloud.version property and dependencies management tag from spring initializer pom.xml
 * Add config-server uri in YAML file by setting spring.cloud.config.uri=http://localhost:8888/
 * Configure spring-boot-config-server to supply application specific config by just creating another yml file in git repo with value same as of spring.application.name property e.g. spring-boot-config-client in this case.
+
+# Refresh Properties w/o client app restart
+* Changing and committing config file in gitrepo doesn't publish new values to config-client because client loads the properties during boot only.
+* config-client needs to be restarted to get new config file changes from config-server
+* To avoid restart of client follow below steps:
+  * Have actuator dependency in pom.xml
+  * Add @RefreshScope to Classes/Beans which needs to refresh their dependencies when a refresh is triggered
+  * Make config change to git repo file
+  * Make a POST call to http://localhost:8080/actuator/refresh to trigger the refresh
+  * Post call will return response telling which properties were refreshed
