@@ -94,3 +94,7 @@ Override precedence: command line > application.properties w/ jar > application.
   * Make config change to git repo file
   * Make a POST call to http://localhost:8080/actuator/refresh to trigger the refresh
   * Post call will return response telling which properties were refreshed
+
+# Auto refresh config for multiple instances of a service
+1. we have one concept called spring cloud bus where all the instances will be listening to a queue(like RabbitMQ) and if any one instance calls refresh url a message will be send to Rabbit MQ and all other instances will listen to message do refresh automatically.. By this method if we do refresh call from any one instance is enough, automatically other instances will be refreshed.
+2. Web-hook along with spring cloud bus: In this we need to configure spring-cloud-config-server url(/monitor) as a web-hook in git repository setting, when ever a commit is made automatically this web-hook will be called and spring-cloud-config server will send a message to RabbitMQ and all the instances listening to this Queue will refresh their properties automatically. This we does not need to even do a single refresh on any instance.
