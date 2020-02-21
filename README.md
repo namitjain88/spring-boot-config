@@ -98,3 +98,10 @@ Override precedence: command line > application.properties w/ jar > application.
 # Auto refresh config for multiple instances of a service
 1. we have one concept called spring cloud bus where all the instances will be listening to a queue(like RabbitMQ) and if any one instance calls refresh url a message will be send to Rabbit MQ and all other instances will listen to message do refresh automatically.. By this method if we do refresh call from any one instance is enough, automatically other instances will be refreshed.
 2. Web-hook along with spring cloud bus: In this we need to configure spring-cloud-config-server url(/monitor) as a web-hook in git repository setting, when ever a commit is made automatically this web-hook will be called and spring-cloud-config server will send a message to RabbitMQ and all the instances listening to this Queue will refresh their properties automatically. This we does not need to even do a single refresh on any instance.
+
+# Microservices configuration best practices
+* Service specific config which is not expected to change should not go in config  server
+* Service specific config which is expected to change should go in config  server
+* Try to use default values for each property for dev env using ${actual_value : default_value} to quickly start service in dev.
+* Config server can be secured using Spring Security
+* Credentials/Sensitive info in git should be stored in ENCRYPTED form. Use JCE(Java Cryptography Extension) on config server to encrypt/decrypt
